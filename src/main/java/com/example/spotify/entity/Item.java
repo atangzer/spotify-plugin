@@ -1,5 +1,8 @@
 package com.example.spotify.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Item {
 	private Album album;
 

@@ -1,29 +1,16 @@
 package com.example.spotify.controller;
 
-import java.util.logging.Logger;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.StringTrimmerEditor;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
-import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
 import org.springframework.security.oauth2.client.web.reactive.function.client.ServerOAuth2AuthorizedClientExchangeFilterFunction;
-import org.springframework.stereotype.Controller;
 //import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.spotify.Service.SpotifyService;
@@ -39,7 +26,6 @@ public class AppController {
 	@Autowired
 	private SpotifyService spotifyService;
 	
-	private OAuth2AuthorizedClient authorizedClient;
 	private WebClient webClient;
 	
 	public AppController(WebClient webClient) {
@@ -73,9 +59,11 @@ public class AppController {
 		return "set-up";
 	}
 	
-	@GetMapping("/test")
-	public Song getTest() {
-		Song song = spotifyService.getTopSongs(10, authorizedClient);
+	@GetMapping("/Collage")
+	//public Song getCollage(@ModelAttribute("selection") @Valid Selection selection, Model model) {
+	public Song getCollage() {	
+		Song song = spotifyService.getTopSongs(10);
+		//Song song = spotifyService.getTopSongs(selection.getRows() * selection.getColumns());
 		//System.out.println(song);
 		return song;
 		//return "test";

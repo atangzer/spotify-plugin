@@ -2,6 +2,9 @@ package com.example.spotify.entity;
 
 import java.util.Arrays;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Song {
 	private Item[] items;
 

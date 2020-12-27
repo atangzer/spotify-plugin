@@ -17,16 +17,14 @@ public class SpotifyServiceImplement implements SpotifyService{
 	private WebClient webClient;
 
 	@Override
-	public Song getTopSongs(int n, OAuth2AuthorizedClient authorizedClient) {
-		//String path = "https://api.spotify.com/v1/me/top/tracks" + "?limit=" + Integer.toString(n);
-		String path = "https://api.spotify.com/v1/me/top/tracks?limit=10";
-		System.out.println(path);
+	public Song getTopSongs(int n) {
+		String path = "https://api.spotify.com/v1/me/top/tracks" + "?limit=" + Integer.toString(n);
+		//String path = "https://api.spotify.com/v1/me/top/tracks?limit=10";
+		//System.out.println(path);
 		
 		Song songs = webClient
 						.get()
 						.uri(path)
-						.attributes(ServerOAuth2AuthorizedClientExchangeFilterFunction
-			            	      .oauth2AuthorizedClient(authorizedClient))
 						.retrieve()
 						.bodyToMono(Song.class)
 						.block();

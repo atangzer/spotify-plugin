@@ -1,5 +1,8 @@
 package com.example.spotify.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Image {
 	private int h;
 	private int w;
