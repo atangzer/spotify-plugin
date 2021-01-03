@@ -1,16 +1,24 @@
 package com.example.spotify.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+
 import javax.validation.Valid;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.web.reactive.function.client.ServerOAuth2AuthorizedClientExchangeFilterFunction;
-//import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.spotify.Service.SpotifyService;
@@ -20,7 +28,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import reactor.core.publisher.Mono;
 
-@RestController
+@Controller
 public class AppController {
 	
 	@Autowired
@@ -59,14 +67,20 @@ public class AppController {
 		return "set-up";
 	}
 	
-	@GetMapping("/Collage")
-	//public Song getCollage(@ModelAttribute("selection") @Valid Selection selection, Model model) {
-	public Song getCollage() {	
-		Song song = spotifyService.getTopSongs(10);
-		//Song song = spotifyService.getTopSongs(selection.getRows() * selection.getColumns());
+	@PostMapping("/collage")
+	public String getCollage(@ModelAttribute("selection") @Valid Selection selection, Model model) {
+	//public Song getCollage() {	
+		//Song song = spotifyService.getTopSongs(10);
+		Song song = spotifyService.getTopSongs(selection.getRows() * selection.getColumns());
 		//System.out.println(song);
-		return song;
-		//return "test";
+		try {
+			CollageService.makeCollage(song, selection);
+		} catch (IOException e) {
+			return "redirect:/error-page";
+		}
+		return "collage";
+		//return song;
+		//return "test";/
 	}
 	
 	@GetMapping("/self")
@@ -97,5 +111,14 @@ public class AppController {
 		return retrievedResource.map(string -> string);
 
 	}
+	
+	@GetMapping(value = "/download", produces = MediaType.IMAGE_JPEG_VALUE)
+	public @ResponseBody byte[] getDownload() throws IOException {
+		File file = new File("collage.jpeg");
+		InputStream in = FileUtils.openInputStream(file);
+		file.delete();
+		return IOUtils.toByteArray(in);
+	}
+	
 	
 }
