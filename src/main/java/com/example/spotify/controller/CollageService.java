@@ -79,13 +79,13 @@ public class CollageService {
 		int offX = 0;
 		int offY = 0;
 		
-		if (dH > dW) {
+		/*if (dH > dW) {
 			offX = (int)(dW * ((100.0f - percent) / 100.0f)) / (col + 1);
 			offY = (int)(dH * (iH * rows)) / (rows + 1);
 		} else {
 			offX = (int)(dW - (iW * col)) / (col + 1);
 			offY = (int)(dH * ((100.0f - percent) / 100.0f)) / (rows + 1);
-		}
+		}*/
 		
 		int posX = offX;
 		int posY = offY;
