@@ -40,7 +40,7 @@ public class WebClientConfig {
 		ServletOAuth2AuthorizedClientExchangeFilterFunction oauth2Client = 
 				new ServletOAuth2AuthorizedClientExchangeFilterFunction(authorizedClientManager);
 		
-		oauth2Client.setDefaultClientRegistrationId("spotify-client");
+		oauth2Client.setDefaultClientRegistrationId("spotify");
 		//oauth2Client.setDefaultOAuth2AuthorizedClient(true);
 		
 		return WebClient.builder()

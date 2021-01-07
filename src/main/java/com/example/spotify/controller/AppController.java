@@ -43,14 +43,14 @@ public class AppController {
 	// TODO: Refactor
 	@GetMapping("/redirect")
 	public String getRedirect(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient){   
-	    String resourceUri = "api.spotify.com/v1/login/oauth2/code/spotify-client";
+	    String resourceUri = "api.spotify.com/v1/login/oauth2/code/spotify";
 		//String resourceUri = "https://api.spotify.com/v1/me";
 		
 	    String body = webClient
 	            .get()
 	            .uri(resourceUri)
 	            .attributes(ServerOAuth2AuthorizedClientExchangeFilterFunction
-	            	      .clientRegistrationId("spotify-client"))
+	            	      .clientRegistrationId("spotify"))
 	            .retrieve()
 	            .bodyToMono(String.class)
 	            .block();
@@ -98,13 +98,13 @@ public class AppController {
 	
 	@GetMapping("/token")
 	Mono<String> getToken(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient) {
-		String resourceUri = "api.spotify.com/v1/login/oauth2/code/spotify-client";
+		String resourceUri = "api.spotify.com/v1/login/oauth2/code/spotify";
 		
 		Mono<String> retrievedResource = webClient
 		            .get()
 		            .uri(resourceUri)
 		            .attributes(ServerOAuth2AuthorizedClientExchangeFilterFunction
-		            	      .clientRegistrationId("spotify-client"))
+		            	      .clientRegistrationId("spotify"))
 		            .retrieve()
 		            .bodyToMono(String.class);
 		
