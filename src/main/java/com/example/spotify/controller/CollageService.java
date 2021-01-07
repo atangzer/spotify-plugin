@@ -58,7 +58,7 @@ public class CollageService {
 		BufferedImage collage = new BufferedImage(dW, dH, BufferedImage.TYPE_INT_RGB);
 		Graphics2D graphics = collage.createGraphics();
 		
-		int iW;
+		int iW = 0;
 		int iH = 0;
 		float percent = 100.0f;
 		
@@ -76,9 +76,37 @@ public class CollageService {
 			iW = iH;
 		}
 		
+		int offX = 0;
+		int offY = 0;
+		
+		if (dH > dW) {
+			offX = (int)(dW * ((100.0f - percent) / 100.0f)) / (col + 1);
+			offY = (int)(dH * (iH * rows)) / (rows + 1);
+		} else {
+			offX = (int)(dW - (iW * col)) / (col + 1);
+			offY = (int)(dH * ((100.0f - percent) / 100.0f)) / (rows + 1);
+		}
+		
+		int posX = offX;
+		int posY = offY;
+		
+		int p = 0;
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < col; j++) {
+				graphics.drawImage(images[p], posX, posY, iW, iH, null);
+				posX += iW + offX;
+				if (p < images.length - 1) p++;
+				else p = 0;
+			}
+			
+			posX = offX;
+			
+			posY += iH + offY;
+		}
+		
 		graphics.dispose();
 		
-		File file = new File("test.jpeg");
+		File file = new File("collages\\collage.jpeg");
 		
 		ImageIO.write(collage, "jpeg", file);
 		

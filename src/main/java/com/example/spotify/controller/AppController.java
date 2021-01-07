@@ -114,7 +114,7 @@ public class AppController {
 	
 	@GetMapping(value = "/download", produces = MediaType.IMAGE_JPEG_VALUE)
 	public @ResponseBody byte[] getDownload() throws IOException {
-		File file = new File("collage.jpeg");
+		File file = new File("collages\\collage.jpeg");
 		InputStream in = FileUtils.openInputStream(file);
 		file.delete();
 		return IOUtils.toByteArray(in);
