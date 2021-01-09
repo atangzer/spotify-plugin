@@ -1,5 +1,6 @@
 package com.example.spotify.controller;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -15,25 +16,11 @@ import com.example.spotify.entity.Song;
 
 public class CollageService {
 	
-	public String getPlaylistId(String url) {
-		String linkID = "";
-		URI uri;
-		
-		try {
-			uri = new URI(url);
-			String path = uri.getPath();
-			linkID = path.substring(path.lastIndexOf('/') + 1);
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		}
-		
-		return linkID;
-	}
-	
 	public static void makeCollage(Song song, Selection selection) throws IOException {
-		// TODO Auto-generated method stub
-		int dW = selection.getDisplayW();
-		int dH = selection.getDisplayH();
+		//int dW = selection.getDisplayW();
+		//int dH = selection.getDisplayH();
+		int dW = 1940;
+		int dH = 1940;
 		int rows = selection.getRows();
 		int col = selection.getColumns();
 		
@@ -60,32 +47,21 @@ public class CollageService {
 		
 		int iW = 0;
 		int iH = 0;
-		float percent = 100.0f;
 		
 		if (dH > dW) {
 			do {
-				percent -= 10.0f;
-				iW = (int)((dW * (percent / 100.0f))) / col;
+				iW = (int)(dW / col);
 			} while ((iW * col) > dH);
 			iH = iW;
 		} else {
 			do {
-				percent -= 10.0f;
-				iH = (int)((dH * (percent / 100.0f))) / rows;
+				iH = (int)(dH / rows);
 			} while ((iH * col) > dW);
 			iW = iH;
 		}
 		
 		int offX = 0;
 		int offY = 0;
-		
-		/*if (dH > dW) {
-			offX = (int)(dW * ((100.0f - percent) / 100.0f)) / (col + 1);
-			offY = (int)(dH * (iH * rows)) / (rows + 1);
-		} else {
-			offX = (int)(dW - (iW * col)) / (col + 1);
-			offY = (int)(dH * ((100.0f - percent) / 100.0f)) / (rows + 1);
-		}*/
 		
 		int posX = offX;
 		int posY = offY;
@@ -106,9 +82,9 @@ public class CollageService {
 		
 		graphics.dispose();
 		
-		File file = new File("collages\\collage.jpeg");
+		File file = new File("collages\\collage.png");
 		
-		ImageIO.write(collage, "jpeg", file);
+		ImageIO.write(collage, "png", file);
 		
 	}
 }
