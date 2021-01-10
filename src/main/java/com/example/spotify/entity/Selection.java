@@ -3,9 +3,9 @@ package com.example.spotify.entity;
 public class Selection {
 	private int rows;
 	private int columns;
+	private int n;
 	private int displayH;
 	private int displayW;
-	private int hex;
 	
 	public int getRows() {
 		return rows;
@@ -38,13 +38,13 @@ public class Selection {
 	public void setDisplayW(int displayW) {
 		this.displayW = displayW;
 	}
-	
-	public int getHex() {
-		return hex;
+
+	public int getN() {
+		return n;
 	}
-	
-	public void setHex(int hex) {
-		this.hex = hex;
+
+	public void setN(int n) {
+		this.n = n;
 	}
 	
 }

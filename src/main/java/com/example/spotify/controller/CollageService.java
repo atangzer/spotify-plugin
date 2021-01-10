@@ -22,7 +22,7 @@ public class CollageService {
 		int dW = 1940;
 		int dH = 1940;
 		int rows = selection.getRows();
-		int col = selection.getColumns();
+		int col = selection.getRows();
 		
 		String[] urls = new String[song.getItems().length];
 		

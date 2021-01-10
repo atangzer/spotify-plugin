@@ -26,47 +26,23 @@
 	<div class="container d-flex h-100 mx-auto">
 		<div class="containter-fluid justify-content-center align-self-center mx-auto">
 			<form th:action="@{/collage}" method="POST" th:object="${selection}">
-				<h1>Enter the Dimensions of Your Album Grid</h1>
-
+				<h1>Collage Dimensions</h1>
+				<p> Enter the number of album covers you want in each row and column.</p>
 				<div class="form-group">
 					<div class="row mx-auto">
-						<div class="col-3">
+						<div class="col">
 							<label class="my-2" for=rows>Rows</label> <input class="form-control" type="number" th:field="*{rows}" id=rows>
-							<!--<p th:if="${#fields.hasErrors('rows')}" th:errors="*{rows}" class="alert alert-danger"></p>-->
-						</div>
-
-						<div class="col-3">
-							<label class="my-2" for=columns>Columns</label> <input class="form-control" type="number" th:field="*{columns}" id=columns>
-							<!--<p th:if="${#fields.hasErrors('columns')}" th:errors="*{columns}" class="alert alert-danger"></p>-->
-						</div>						
+						</div>					
 					</div>
 
 					<div class="row justify-content-center">
 						<button class="btn btn-primary btn-lg" type="submit">Generate</button>
 					</div>
 				</div>
-
-				<input type="hidden" th:field="*{displayH}" id=displayH>
-
-				<input type="hidden" th:field="*{displayW}" id=displayW>
-
 			</form>
 		</div>
-
 	</div>
 
-	<script th:inline="javascript">
-		var scale = window.devicePixelRatio;
-
-		var displayW = screen.width * scale;
-
-		var displayH = screen.height * scale;
-
-		document.getElementById("displayW").value = displayW;
-
-		document.getElementById("displayH").value = displayH;
-
-	</script>
 </body>
 
 </html>

@@ -69,18 +69,15 @@ public class AppController {
 	
 	@PostMapping("/collage")
 	public String getCollage(@ModelAttribute("selection") @Valid Selection selection, Model model) {
-	//public Song getCollage() {	
-		//Song song = spotifyService.getTopSongs(10);
-		Song song = spotifyService.getTopSongs(selection.getRows() * selection.getColumns());
-		//System.out.println(song);
+		int n = selection.getRows(); 
+		Song song = spotifyService.getTopSongs(n * n);
+
 		try {
 			CollageService.makeCollage(song, selection);
 		} catch (IOException e) {
 			return "redirect:/error-page";
 		}
 		return "collage";
-		//return song;
-		//return "test";/
 	}
 	
 	@GetMapping("/self")
