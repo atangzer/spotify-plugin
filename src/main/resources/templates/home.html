@@ -16,23 +16,22 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<link href="../static/css/style.css" th:href="@{/css/style.css} "
-	rel="stylesheet" />
 </head>
 
 <body>
 
-	<div class="container d-flex h-100 text-center">
-		<div class="containter-fluid justify-content-center align-self-center mx-auto">
-			<h1 class="my-2">Anna's Spotify Plug-In</h1>
-			<h3 class="my-2">Create a picture grid using the album covers of your top Spotify songs!</h3>
-			<a class="btn btn-primary btn-lg my-2"
-				href="/oauth2/authorization/spotify" role="button">Get Started</a>
-		</div>
+	<div class="d-flex flex-column">
+		
+		<h1 class="pt-3 text-center">Anna's Spotify Plug-In</h1>
+		<h3 class="text-center">Create a picture grid using the album covers of your top Spotify songs!</h3>
+			
+		<img class="py-5 img-fluid mx-auto" src="https://github.com/atangzer/spotify-plugin/blob/master/collages/collage.png?raw=true" alt = "collage" style = "width:700px;height:700px;">
+		
+		<div class="pt-4 d-flex justify-content-center">
+			<a class="btn btn-primary btn-lg" href="/oauth2/authorization/spotify" role="button">Get Started</a>
+		</div>	
 	</div>
 
 </body>
-
-
 
 </html>
