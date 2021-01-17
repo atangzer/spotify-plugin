@@ -1,6 +1,9 @@
 package com.example.spotify.entity;
 
+import javax.validation.constraints.Min;
+
 public class Selection {
+	@Min(value = 1, message = "Enter a value greater than 0!")
 	private int rows;
 	private int columns;
 	private int n;
