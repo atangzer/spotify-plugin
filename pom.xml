@@ -8,14 +8,13 @@
 		<version>2.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example.spotify</groupId>
+	<groupId>com.example</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spotify-plugin</name>
 	<description>Demo Spotify project for Spring Boot</description>
 
 	<properties>
-		<start-class>com.example.spotify</start-class>
 		<java.version>1.8</java.version>
 	</properties>
 
@@ -85,18 +84,24 @@
 		<plugins>
 		  <plugin>
 			<!-- Build an executable JAR -->
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-jar-plugin</artifactId>
-			<version>3.1.0</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
 			<configuration>
-			  <archive>
-				<manifest>
-				  <addClasspath>true</addClasspath>
-				  <classpathPrefix>lib/</classpathPrefix>
-				  <mainClass>com.example.spotify</mainClass>
-				</manifest>
-			  </archive>
+				<archive>
+				  <manifest>
+					<addClasspath>true</addClasspath>
+					<classpathPrefix>lib/</classpathPrefix>
+					<mainClass>com.example.spotify</mainClass>
+				  </manifest>
+				</archive>
 			</configuration>
+			<executions>
+				<execution>
+					<goals>
+						<goal>repackage</goal>
+					</goals>
+				</execution>
+			</executions>
 		  </plugin>
 		</plugins>
 	  </build>

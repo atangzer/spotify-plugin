@@ -1,0 +1,13 @@
+com\example\spotify\controller\AppController.class
+com\example\spotify\Service\SpotifyServiceImplement.class
+com\example\spotify\controller\CollageService.class
+com\example\spotify\Service\SpotifyService.class
+com\example\spotify\entity\Item.class
+com\example\spotify\entity\Selection.class
+com\example\spotify\controller\HomeController.class
+com\example\spotify\SpotifyApiApplication.class
+com\example\spotify\entity\Song.class
+com\example\spotify\entity\Album.class
+com\example\spotify\configuration\WebClientConfig.class
+com\example\spotify\entity\Image.class
+com\example\spotify\configuration\WebSecurity.class
