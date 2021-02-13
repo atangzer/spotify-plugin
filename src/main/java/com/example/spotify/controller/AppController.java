@@ -41,6 +41,11 @@ public class AppController {
 		this.webClient = webClient;
 	}
 	
+	@GetMapping("/")
+	public String getHome() {
+		return "home";
+	}
+	
 	@GetMapping("/set-up")
 	public String getSetUp(Model model) {
 		// dimensions
@@ -61,21 +66,8 @@ public class AppController {
 		} catch (NoTopSongsException e) {
 			return "redirect:/no-songs-error";
 		}
-		
+
 		return "collage";
-	}
-	
-	@GetMapping("/self")
-	public JsonNode getSelf() {
-		String resourceUri = "https://api.spotify.com/v1/me";
-		
-		JsonNode body = webClient
-						.get()
-						.uri(resourceUri)
-						.retrieve()
-						.bodyToMono(JsonNode.class)
-						.block();
-		return body;
 	}
 	
 	@GetMapping(value = "/download", produces = MediaType.IMAGE_PNG_VALUE)
