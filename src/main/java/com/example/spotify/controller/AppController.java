@@ -24,6 +24,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import com.example.spotify.Service.SpotifyService;
 import com.example.spotify.entity.Selection;
 import com.example.spotify.entity.Song;
+import com.example.spotify.exceptions.NoTopSongsException;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import reactor.core.publisher.Mono;
@@ -38,25 +39,6 @@ public class AppController {
 	
 	public AppController(WebClient webClient) {
 		this.webClient = webClient;
-	}
-	
-	// TODO: Refactor
-	@GetMapping("/redirect")
-	public String getRedirect(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient){   
-	    String resourceUri = "api.spotify.com/v1/login/oauth2/code/spotify";
-		//String resourceUri = "https://api.spotify.com/v1/me";
-		
-	    String body = webClient
-	            .get()
-	            .uri(resourceUri)
-	            .attributes(ServerOAuth2AuthorizedClientExchangeFilterFunction
-	            	      .clientRegistrationId("spotify"))
-	            .retrieve()
-	            .bodyToMono(String.class)
-	            .block();
-
-	    //return "song";
-	    return body;
 	}
 	
 	@GetMapping("/set-up")
@@ -76,7 +58,10 @@ public class AppController {
 			CollageService.makeCollage(song, selection);
 		} catch (IOException e) {
 			return "redirect:/error-page";
+		} catch (NoTopSongsException e) {
+			return "redirect:/no-songs-error";
 		}
+		
 		return "collage";
 	}
 	
@@ -91,22 +76,6 @@ public class AppController {
 						.bodyToMono(JsonNode.class)
 						.block();
 		return body;
-	}
-	
-	@GetMapping("/token")
-	Mono<String> getToken(@RegisteredOAuth2AuthorizedClient OAuth2AuthorizedClient authorizedClient) {
-		String resourceUri = "api.spotify.com/v1/login/oauth2/code/spotify";
-		
-		Mono<String> retrievedResource = webClient
-		            .get()
-		            .uri(resourceUri)
-		            .attributes(ServerOAuth2AuthorizedClientExchangeFilterFunction
-		            	      .clientRegistrationId("spotify"))
-		            .retrieve()
-		            .bodyToMono(String.class);
-		
-		return retrievedResource.map(string -> string);
-
 	}
 	
 	@GetMapping(value = "/download", produces = MediaType.IMAGE_PNG_VALUE)

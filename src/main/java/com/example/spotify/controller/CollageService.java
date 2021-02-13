@@ -1,11 +1,9 @@
 package com.example.spotify.controller;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 
@@ -13,16 +11,19 @@ import javax.imageio.ImageIO;
 
 import com.example.spotify.entity.Selection;
 import com.example.spotify.entity.Song;
+import com.example.spotify.exceptions.NoTopSongsException;
 
 public class CollageService {
 	
-	public static void makeCollage(Song song, Selection selection) throws IOException {
+	public static void makeCollage(Song song, Selection selection) throws IOException, NoTopSongsException {
 		//int dW = selection.getDisplayW();
 		//int dH = selection.getDisplayH();
 		int dW = 1940;
 		int dH = 1940;
 		int rows = selection.getRows();
 		int col = selection.getRows();
+
+		if (song.getItems().length == 0) throw new NoTopSongsException("Account does not have a list of top songs.");
 		
 		String[] urls = new String[song.getItems().length];
 		
