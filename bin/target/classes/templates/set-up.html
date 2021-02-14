@@ -1,0 +1,68 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+</style>
+
+<body>
+	<div class="d-flex flex-column">
+		<h1 class="pt-3 text-center">Collage Dimensions</h1>
+		<h3  class="text-center"> Enter the number of album covers you want in each row and column.</h3>
+				
+		<form th:action="@{/collage}" method="POST" th:object="${selection}">	
+			<div class="pt-4 d-flex flex-column">
+			
+			<div class="pt-4 d-flex justify-content-center">
+				<div class = "p-2">
+				
+					<div class="input-group">		
+						<div class="input-group-prepend">
+		    				<span class="input-group-text">Number of Albums</span>
+		 				</div>
+						<input type="text" class="form-control" th:field="*{rows}" id=rows min = 1>
+						<p th:if="${#fields.hasErrors('rows')}" th:errors="*{rows}"
+								class="alert alert-danger"></p>
+					</div>
+					
+				</div>
+
+			</div>
+				
+			<div class="pt-4 d-flex justify-content-center">
+				<button class="btn btn-primary btn-lg" type="submit">Generate</button>
+			</div>
+			</div>
+			
+		</form>
+		</div>
+</body>
+
+</html>

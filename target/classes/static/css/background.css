@@ -8,10 +8,9 @@
     filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='5');   
 }
 
-.container {
+.container{
+  position: relative; 
   background:rgba(0,0,0,0.6);
-  position: absolute;
   margin: -25px 0 0 -25px; 
   top: 40%;
-  left: 25%;
 }
