@@ -1,19 +1,19 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="background.css">
+<link rel="stylesheet" th:href="@{/css/background.css}">
 
 <title>Collagify</title>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/object-fit-images/3.2.4/ofi.min.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 
 </head>
 
@@ -21,20 +21,23 @@
 	<div class="container-full-bg"></div>
 		<div class="jumbotron jumbotron-fluid bg-dark">
 			
-			<div class="container text-white">
+			<div class="container text-white	">
 				<h1 class="display-1 text-center">Collagify</h1><br>
 
 				<h5 class="dispay-3 text-center">Create a picture grid using the album covers of your top Spotify songs!</h5>
 				
-				<hr class="my-4"><br>
+				<hr class="my-4">
 
 				<p class="lead text-center">
-				<a class="btn btn-primary btn-lg" href="/oauth2/authorization/spotify" role="button">Get Started</a>
+					<a class="btn btn-primary btn-lg" href="/oauth2/authorization/spotify" role="button">Get Started</a>
 				</p>
-			</div>
 
-			<div class="text-white">
-				<p class="lead text-center">Created by Anna Tang</p>
+				<div class="text-white text-center">
+					<p class="lead text-center">Created by Anna Tang</p>
+					<a class="github-button" href="https://github.com/atangzer/spotify-plugin" data-color-scheme="no-preference: light; light: dark; dark: dark;" data-size="large" aria-label="Follow @atangzer on GitHub">About Collagify</a>
+				</div>	
+				<br>
+				
 			</div>
 		</div>
 
