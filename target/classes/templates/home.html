@@ -4,37 +4,39 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="background.css">
 
 <title>Collagify</title>
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/object-fit-images/3.2.4/ofi.min.js"></script>
+
 </head>
 
 <body>
-
-	<div class="d-flex flex-column">
-		
-		<h1 class="pt-3 text-center">Collagify</h1>
-		<h4 class="text-center">Create a picture grid using the album covers of your top Spotify songs!</h4>
+	<div class="container-full-bg"></div>
+		<div class="jumbotron jumbotron-fluid bg-dark">
 			
-		<img class="py-3 img-fluid mx-auto" src="https://raw.githubusercontent.com/atangzer/spotify-plugin/master/collages/collage.png" alt = "collage" style = "width:700px;height:700px;">
-		
-		<div class="pt-1 d-flex justify-content-center">
-			<a class="btn btn-primary btn-lg" href="/oauth2/authorization/spotify" role="button">Get Started</a>
-		</div>	
+			<div class="container text-white">
+				<h1 class="display-1 text-center">Collagify</h1><br>
 
-		<div class="pt-3 d-flex justify-content-center">
-			<h5> Created by Anna Tang</h5>
+				<h5 class="dispay-3 text-center">Create a picture grid using the album covers of your top Spotify songs!</h5>
+				
+				<hr class="my-4"><br>
+
+				<p class="lead text-center">
+				<a class="btn btn-primary btn-lg" href="/oauth2/authorization/spotify" role="button">Get Started</a>
+				</p>
+			</div>
+
+			<div class="text-white">
+				<p class="lead text-center">Created by Anna Tang</p>
+			</div>
 		</div>
-	</div>
 
 </body>
 
