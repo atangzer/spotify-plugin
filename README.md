@@ -1,3 +1,3 @@
-# Spotify-Plugin
+# Collagify
  
-WIP
+Documentation coming soon....I promise.
