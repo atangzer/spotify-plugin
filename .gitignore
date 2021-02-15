@@ -32,6 +32,7 @@ application.yml
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
+.project
 
 # Local History for Visual Studio Code
 .history/

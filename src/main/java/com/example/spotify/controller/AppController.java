@@ -10,9 +10,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
-import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
-import org.springframework.security.oauth2.client.web.reactive.function.client.ServerOAuth2AuthorizedClientExchangeFilterFunction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +22,6 @@ import com.example.spotify.Service.SpotifyService;
 import com.example.spotify.entity.Selection;
 import com.example.spotify.entity.Song;
 import com.example.spotify.exceptions.NoTopSongsException;
-import com.fasterxml.jackson.databind.JsonNode;
-
-import reactor.core.publisher.Mono;
 
 @Controller
 public class AppController {
@@ -57,7 +51,14 @@ public class AppController {
 	@PostMapping("/collage")
 	public String getCollage(@ModelAttribute("selection") @Valid Selection selection, Model model) {
 		int n = selection.getRows(); 
-		Song song = spotifyService.getTopSongs(n * n);
+
+		if ((n * n) > 50) {
+			n = 50;
+		} else {
+			n *= n;
+		}
+		
+		Song song = spotifyService.getTopSongs(n);
 
 		try {
 			CollageService.makeCollage(song, selection);
