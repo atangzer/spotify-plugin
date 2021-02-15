@@ -33,6 +33,7 @@ application.yml
 !.vscode/extensions.json
 *.code-workspace
 .project
+.classpath
 
 # Local History for Visual Studio Code
 .history/
