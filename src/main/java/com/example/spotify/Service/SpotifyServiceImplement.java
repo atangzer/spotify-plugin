@@ -14,7 +14,7 @@ public class SpotifyServiceImplement implements SpotifyService{
 	@Override
 	public Song getTopSongs(int n) {
 
-		String path = "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&" + "limit=" + Integer.toString(x);
+		String path = "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&" + "limit=" + Integer.toString(n);
 		
 		Song songs = webClient
 						.get()

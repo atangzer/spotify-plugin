@@ -1,48 +1,51 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/background.css}">
 
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<title>Collagify</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
 </head>
 
-<style>
-html, body {
-    height: 100%;
-}
-
-html {
-    display: table;
-    margin: auto;
-}
-
-body {
-    display: table-cell;
-    vertical-align: middle;
-}
-</style>
-
 <body>
-	<div class="container d-flex h-100 mx-auto text-center">
-		<div
-			class="containter-fluid justify-content-center align-self-center mx-auto">
-			<h1>Your collage is finished!</h1>
 
-			<p>Click below to download</p>
+	<div class="container-full-bg"></div>
 
-			<a th:href="@{/download}" class="btn btn-primary btn-lg">Download</a>
+		<div class="jumbotron jumbotron-fluid bg-transparent">
+			<div class="card-img-overlay">	
+				<div class="container text-white">
+
+					<br><h2 class="display-1 text-center">Your collage is finished!</h2><br>
+
+					<h5 class="dispay-3 text-center">Click below to download.</h5>
+
+					<hr class="my-4">
+
+					<br>
+
+					<p class="lead text-center">
+						<a th:href="@{/download}" class="btn btn-outline-light btn-lg">Download</a>
+					</p>	
+					<br>
+				</div>
+			 </div>
+
+			<div style="text-align:center;">
+				<a class="github-button" href="https://github.com/atangzer/spotify-plugin" data-color-scheme="no-preference: light; light: light; dark: dark;" aria-label="Follow @atangzer on GitHub">About Collagify</a>
+			</div>	
+
 		</div>
-	</div>
-
 
 </body>
+</html>

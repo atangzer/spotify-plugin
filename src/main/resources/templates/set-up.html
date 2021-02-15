@@ -20,39 +20,40 @@
 
 <body>
 	<div class="container-full-bg"></div>
+
 	<div class="jumbotron jumbotron-fluid bg-transparent">
 		<div class="card-img-overlay">	
-		<div class="container text-white">
-			<br><h1 class="display-1 text-center">Collage Dimensions</h1><br>
+			<div class="container text-white">
+				<br><h1 class="display-1 text-center">Collage Dimensions</h1><br>
 
-			<h5 class="dispay-3 text-center">Enter the number of album covers you want in each row and column.</h5>
-			<hr class="my-4">
+				<h5 class="dispay-3 text-center">Enter the number of album covers you want in each row and column.</h5>
+				<hr class="my-4">
 
-				<form th:action="@{/collage}" method="POST" th:object="${selection}">	
-				<div> 
-					<div class="input-group w-25 mx-auto">		
-						<div class="input-group-prepend">
-							<span class="input-group-text">Number of Albums</span>
+					<form th:action="@{/collage}" method="POST" th:object="${selection}">	
+					<div> 
+						<div class="input-group w-25 mx-auto">		
+							<div class="input-group-prepend">
+								<span class="input-group-text">Number of Albums</span>
+							</div>
+
+							<input type="text" class="form-control" th:field="*{rows}" id=rows min = 1>
+							<p th:if="${#fields.hasErrors('rows')}" th:errors="*{rows}" class="alert alert-danger"></p>
 						</div>
-
-						<input type="text" class="form-control" th:field="*{rows}" id=rows min = 1>
-						<p th:if="${#fields.hasErrors('rows')}" th:errors="*{rows}" class="alert alert-danger"></p>
 					</div>
-				</div>
-				</form>
+					</form>
 
-			<br>
-			<p class="lead text-center">
-				<a class="btn btn-outline-light btn-lg" href="/oauth2/authorization/spotify" role="button">Generate</a>
-			</p>	
-			<br>
-	</div>
-	</div>	
+				<br>
+				<p class="lead text-center">
+					<a class="btn btn-outline-light btn-lg" href="/oauth2/authorization/spotify" role="button">Generate</a>
+				</p>	
+				<br>
+			</div>
+		</div>	
 
-	</div>
+		<div  style="text-align:center;">
+			<a class="github-button" href="https://github.com/atangzer/spotify-plugin" data-color-scheme="no-preference: light; light: light; dark: dark;" aria-label="Follow @atangzer on GitHub">About Collagify</a>
+		</div>
 
-	<div  style="text-align:center;">
-		<a class="github-button" href="https://github.com/atangzer/spotify-plugin" data-color-scheme="no-preference: light; light: light; dark: dark;" aria-label="Follow @atangzer on GitHub">About Collagify</a>
 	</div>
 
 </body>

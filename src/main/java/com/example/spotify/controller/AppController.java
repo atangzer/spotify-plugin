@@ -55,9 +55,9 @@ public class AppController {
 		if ((n * n) > 50) {
 			n = 50;
 		} else {
-			n *= n;
+			n = n * n;
 		}
-		
+
 		Song song = spotifyService.getTopSongs(n);
 
 		try {
