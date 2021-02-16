@@ -18,4 +18,4 @@ Comments? Questions? Suggestions? - I'd love to hear them. Feel free to make an 
 
 ## Preview 
 
-![Collage](spotify-plugin/collages/collage.png) 
+![Collage](https://github.com/atangzer/spotify-plugin/blob/master/collages/collage.png) 
